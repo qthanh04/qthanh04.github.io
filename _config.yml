@@ -196,6 +196,9 @@ keep_files:
   - CNAME
   - .nojekyll
 
+# Theme
+remote_theme: alshedivat/al-folio
+
 # Plug-ins
 plugins:
   - jekyll-archives-v2

@@ -3,12 +3,17 @@ name: "CodeQL config"
 
 # Paths to ignore during analysis
 paths-ignore:
-  - "_scripts/**"          # Jekyll template JS files
-  - "assets/js/distillpub/transforms.v2.js"  # Large distill file
-  - "assets/js/distillpub/template.v2.js"    # Large distill file
-  - "**/*.min.js"          # Minified files
-  - "**/node_modules/**"   # Dependencies
-  - "vendor/**"            # Ruby gems
+  - "_scripts/**" # Jekyll template JS files
+  - "assets/js/distillpub/transforms.v2.js" # Large distill file
+  - "assets/js/distillpub/template.v2.js" # Large distill file
+  - "**/*.min.js" # Minified files
+  - "**/node_modules/**" # Dependencies
+  - "vendor/**" # Ruby gems
+
+# Language-specific configuration
+languages:
+  - javascript-typescript
+  # Remove ruby from analysis - Jekyll plugins don't work well with CodeQL
 
 # Only analyze actual JavaScript files, not Jekyll templates
 paths:
