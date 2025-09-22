@@ -18,7 +18,6 @@ To include a jupyter notebook in a post, you can use the following code:
 {% assign jupyter_path = 'assets/jupyter/blog.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
-  <!-- {% jupyter_notebook jupyter_path %} -->
   <p>Jupyter notebook display temporarily disabled. The notebook exists at: {{ jupyter_path }}</p>
 {% else %}
   <p>Sorry, the notebook you are looking for does not exist.</p>
@@ -37,7 +36,6 @@ The plugin takes as input the path to the notebook, but it assumes the file exis
 {% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
 {% if notebook_exists == "true" %}
 
-<!-- {% jupyter_notebook jupyter_path %} -->
 <div style="border: 1px solid #ddd; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
   <h4>📓 Jupyter Notebook Demo</h4>
   <p><strong>Note:</strong> Jupyter notebook rendering is temporarily disabled.</p>
