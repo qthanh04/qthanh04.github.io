@@ -40,6 +40,12 @@ jobs:
           bundle config set --local frozen false
           bundle install
 
+      - name: Debug installed gems
+        run: |
+          bundle list
+          echo "--- Checking for jekyll-terser references ---"
+          grep -r "jekyll-terser" . || echo "No jekyll-terser references found"
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
