@@ -1,41 +1,34 @@
-name: Build and Deploy
+name: Build and Deploy (Docker Alternative)
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger only as backup
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: "pages-docker"
   cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ruby:3.2-alpine
     steps:
+      - name: Install system dependencies
+        run: |
+          apk add --no-cache build-base git imagemagick vips
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.2"
-          bundler-cache: false
-
-      - name: Install dependencies
+      - name: Install Ruby dependencies
         run: |
+          gem install bundler
           bundle config set --local deployment false
           bundle config set --local frozen false
           bundle install
@@ -57,7 +50,6 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
