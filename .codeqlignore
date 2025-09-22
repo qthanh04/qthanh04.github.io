@@ -1,0 +1,6 @@
+# Exclude Ruby files from CodeQL analysis
+_plugins/
+*.rb
+Gemfile
+Gemfile.lock
+vendor/

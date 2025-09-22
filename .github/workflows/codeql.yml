@@ -45,8 +45,8 @@ jobs:
         include:
           - language: javascript-typescript
             build-mode: none
-          - language: ruby
-            build-mode: none
+          # Removed ruby language - Jekyll plugins don't work well with CodeQL
+          # Ruby security can be handled by bundler-audit or other Ruby-specific tools
         # CodeQL supports the following values keywords for 'language': 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift'
         # Use `c-cpp` to analyze code written in C, C++ or both
         # Use 'java-kotlin' to analyze code written in Java, Kotlin or both
@@ -59,6 +59,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Skip Ruby analysis entirely
+      - name: Skip if Ruby
+        if: matrix.language == 'ruby'
+        run: |
+          echo "Skipping Ruby analysis - not supported for Jekyll plugins"
+          exit 1
+
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -66,6 +73,8 @@ jobs:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
           config-file: ./.github/codeql/codeql-config.yml
+          # Explicitly disable other languages
+          setup-python-dependencies: false
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.

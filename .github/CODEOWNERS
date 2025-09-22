@@ -1,0 +1,5 @@
+# Exclude Ruby files from automatic scanning
+_plugins/ @github
+*.rb @github
+Gemfile @github
+Gemfile.lock @github

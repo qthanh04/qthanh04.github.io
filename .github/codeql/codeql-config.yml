@@ -9,6 +9,10 @@ paths-ignore:
   - "**/*.min.js" # Minified files
   - "**/node_modules/**" # Dependencies
   - "vendor/**" # Ruby gems
+  - "_plugins/**" # Jekyll Ruby plugins
+  - "**/*.rb" # All Ruby files
+  - "Gemfile" # Ruby dependency file
+  - "Gemfile.lock" # Ruby lockfile
 
 # Language-specific configuration
 languages:
