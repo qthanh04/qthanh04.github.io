@@ -8,8 +8,8 @@ group :jekyll_plugins do
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
     gem 'jekyll-get-json'
-    gem 'jekyll-imagemagick'
-    gem 'jekyll-jupyter-notebook'
+    # gem 'jekyll-imagemagick'  # Temporarily disabled - requires ImageMagick system dependency
+    # gem 'jekyll-jupyter-notebook'  # Temporarily disabled - requires Jupyter system dependency
     gem 'jekyll-link-attributes'
     gem 'jekyll-minifier'
     gem 'jekyll-paginate-v2'
