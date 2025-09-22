@@ -1,2 +1,16 @@
-# Force LF line endings, needed for Docker to work on Windows
-*.sh text eol=lf
+# Exclude Jekyll template files from language detection
+_scripts/*.js linguist-generated=true
+*.liquid.js linguist-generated=true
+
+# Properly identify minified files
+*.min.js linguist-generated=true
+
+# Exclude third-party libraries from language stats
+assets/js/search/** linguist-vendored=true
+assets/js/distillpub/** linguist-vendored=true
+assets/js/bootstrap.* linguist-vendored=true
+assets/js/bootstrap-toc.* linguist-vendored=true
+
+# Jekyll specific files
+_sass/** linguist-language=SCSS
+*.liquid linguist-language=Liquid
