@@ -1,0 +1,41 @@
+name: Ruby Security
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "0 6 * * 1" # Weekly on Mondays
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    name: Ruby Security Scan
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Run bundler audit
+        run: |
+          gem install bundler-audit
+          bundler-audit --update
+
+      - name: Install and run brakeman
+        run: |
+          gem install brakeman
+          # Only scan if there are actual Ruby app files (not just Jekyll plugins)
+          if [ -d "app" ] || [ -d "lib" ] || [ -f "config.ru" ]; then
+            brakeman --quiet --format json
+          else
+            echo "No Ruby application files found - skipping brakeman scan"
+            echo "Jekyll plugins are scanned by bundler-audit for known vulnerabilities"
+          fi
+        continue-on-error: true
