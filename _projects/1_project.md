@@ -12,6 +12,15 @@ related_publications: true
 
 Developed a comprehensive Spring Boot synchronization system supporting multiple client applications for managing Facebook Ads data with real-time updates and scalable architecture.
 
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/overview-nemi.png" title="Overview-Nemi" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-12 mt-2">
+        <div class="caption">Overview Nemi.</div>
+    </div>
+</div>
+
 ---
 
 ## 🏗️ Nemi Architecture (Infrastructure on AWS EKS)
