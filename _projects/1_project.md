@@ -16,7 +16,7 @@ The platform is deployed using the Nemi architecture on AWS EKS, focusing on rel
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-10 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="_projects/ha_tang_eks_nemi.png" title="Nemi architecture on EKS" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/ha_tang_eks_nemi.png" title="Nemi architecture on EKS" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-12 mt-2">
         <div class="caption">Nemi infrastructure overview: EKS with ALB/NLB Ingress, private node groups, ECR, ArgoCD (GitOps), Secrets Manager/ACM, RDS in private subnets, and public DNS routing.</div>
