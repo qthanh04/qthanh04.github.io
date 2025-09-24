@@ -82,7 +82,7 @@ Designed and implemented domain-driven microservices including user management, 
   <div class="col-sm-10 mt-3 mt-md-0">
     {% include figure.liquid 
         loading="eager" 
-        path="assets/img/kafka_info" 
+        path="assets/img/kafka_info.png" 
         title="Nemi Kafka" 
         class="img-fluid rounded z-depth-1" 
     %}
